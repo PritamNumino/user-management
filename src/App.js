@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Login from "./components/login";
+import Home from "./components/home";
+import { Routes, Route } from "react-router-dom";
+import AuthUser from "./components/authUser";
+import SidebarMenu from "./components/common/sidebarMenu";
+import AddUser from "./components/addUser";
+import "./App.css";
+import ForgetPassword from "./components/forgetPassword";
 
 function App() {
+  const { getToken } = AuthUser();
+
+  if (!getToken()) {
+    return <Login />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="d-flex">
+      <div className="col-auto leftSection">
+        <SidebarMenu />
+      </div>
+      <div className="rightSection">
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/addUser" element={<AddUser />} />
+          <Route path="/forgetPassword" element={<ForgetPassword />} />
+        </Routes>
+      </div>
     </div>
   );
 }

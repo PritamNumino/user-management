@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+.leftSection {
+  position: fixed !important;
+}
+
+.rightSection {
+  position: absolute;
+  left: 250px;
+  min-height: 400px;
+  overflow-y: auto;
+}
+
+.spinner {
+  margin-top: 150px;
+  margin-left: 320px;
+  width: 100px;
+  height: 100px;
+}
+
+.errorText {
+  font-size: 14px;
+  color: red;
+}
+
+.multiSelectDropdownError {
+  border: 1px solid red;
+  border-radius: 5px;
+}
